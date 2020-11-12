@@ -83,22 +83,22 @@ def listagem(request):
         for x in base[index]["Concepts"]:
             for compara in valida_Busca["Concepts"]:
                     for ele in compara:
-                        if x["text"] == ele["text"]:
+                        if x["text"] in ele["text"]:
                             soma+=1
         for x in base[index]["Keywords"]:
             for compara in valida_Busca["Keywords"]:
                     for ele in compara:
-                        if x["text"] == ele["text"]:
+                        if x["text"] in ele["text"]:
                             soma+=0.8
         for x in base[index]["Entities"]:
             for compara in valida_Busca["Entities"]:
                     for ele in compara:
-                        if x["text"] == ele["text"]:
+                        if x["text"] in ele["text"]:
                             soma+=0.6
         for x in base[index]["Sintaxes"]:
             for compara in valida_Busca["Sintaxes"]:
                     for ele in compara:
-                        if x["text"] == ele["text"]:
+                        if x["text"] in ele["text"]:
                             soma+=0.2
         somaTotal.append(soma)
 
@@ -131,5 +131,5 @@ def listagem(request):
     retorno['data'].append(documento)
     
 
-    # return HttpResponse(json.dumps(retorno, indent=2))
+    #return HttpResponse(json.dumps(retorno, indent=2))
     return render(request,'index.html',context=retorno)
